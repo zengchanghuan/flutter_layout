@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -56,38 +55,38 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: RefreshIndicator(
-        onRefresh: () async{
-          await Future.delayed(const Duration(seconds: 2));
-        },
-        strokeWidth: 4.0,
-        color: Colors.red,
-        backgroundColor: Colors.red,
-        child: Scrollbar(
+      body: Scrollbar(
+        child: ListView.builder(
+          // mainAxisAlignment: MainAxisAlignment.center,
           controller: _controller,
-          child: NotificationListener(
-            onNotification: (ScrollNotification _event){
-              print(_event);
-              return false;
-            },
-            child: ListView.builder(
-            itemCount: 20,
-            itemBuilder: (context,index){
-              return Container(
-                color: Colors.blue[index % 9 * 100],
-                height: 50,
-              );
-            },
-          ),,
-          ),
-
+          padding: const EdgeInsets.only(bottom: 60.0),
+          itemCount: 28,
+          itemExtent: 80,
+          itemBuilder: (context, index) {
+            // if (kDebugMode) {
+            //   print('building $index');
+            // }
+            return ListTile(
+              leading: const Icon(Icons.person),
+              title: const Text('name'),
+              subtitle: const Text('subtitle'),
+              trailing: IconButton(
+                icon: const Icon(Icons.delete_outline),
+                onPressed: () {},
+              ),
+            );
+          },
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
+          if (kDebugMode) {
+            print(_controller.offset);
+          }
+          _controller.jumpTo(_controller.offset+ 1600.0);
         },
         tooltip: 'increment',
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.arrow_downward),
       ),
     );
   }
