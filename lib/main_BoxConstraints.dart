@@ -62,15 +62,22 @@ class _MyHomePageState extends State<MyHomePage> {
           width: 400,
           height: 400,
           color: Colors.red[200],
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: LayoutBuilder(
-              builder: (BuildContext context,BoxConstraints constraints){
-                if (kDebugMode) {
-                  print('constraints: $constraints');
-                }
-                return const FlutterLogo();
-              },
+          child: Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(
+                minWidth: 60,
+                maxWidth: double.infinity,
+                minHeight: 60,
+                maxHeight: double.infinity,
+              ).loosen(),
+              child: LayoutBuilder(
+                builder: (BuildContext context,BoxConstraints constraints){
+                  if (kDebugMode) {
+                    print('constraints: $constraints');
+                  }
+                  return const FlutterLogo(size: 4000);
+                },
+              ),
             ),
           ),
         ),
