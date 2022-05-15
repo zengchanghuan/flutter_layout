@@ -57,28 +57,20 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Container(
-          width: 400,
-          height: 400,
-          color: Colors.red[200],
-          child: Center(
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(
-                minWidth: 60,
-                maxWidth: double.infinity,
-                minHeight: 60,
-                maxHeight: double.infinity,
-              ).loosen(),
-              child: LayoutBuilder(
-                builder: (BuildContext context,BoxConstraints constraints){
-                  if (kDebugMode) {
-                    print('constraints: $constraints');
-                  }
-                  return const FlutterLogo(size: 4000);
-                },
-              ),
-            ),
+      body: Container(
+        width: 600,
+        height: 800,
+        color: Colors.red[200],
+        child: Center(
+          child: Container(
+            color: Colors.white,
+            width: 180,
+            height: 180,
+            child: const Align(
+                alignment: Alignment(1,-1),
+                child: FlutterLogo(
+                  size: 80,
+                )),
           ),
         ),
       ),
