@@ -50,44 +50,29 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final _controller = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: RefreshIndicator(
-        onRefresh: () async{
-          await Future.delayed(const Duration(seconds: 2));
-        },
-        strokeWidth: 4.0,
-        color: Colors.red,
-        backgroundColor: Colors.red,
-        child: Scrollbar(
-          controller: _controller,
-          child: NotificationListener(
-            onNotification: (ScrollNotification _event){
-              print(_event);
-              return false;
-            },
-            child: ListView.builder(
-            itemCount: 20,
-            itemBuilder: (context,index){
-              return Container(
-                color: Colors.blue[index % 9 * 100],
-                height: 50,
-              );
-            },
-          ),,
+      body: Container(
+        width: 600,
+        height: 800,
+        color: Colors.red[200],
+        child: Center(
+          child: Container(
+            color: Colors.white,
+            width: 180,
+            height: 180,
+            child: const Align(
+                alignment: Alignment(1,-1),
+                child: FlutterLogo(
+                  size: 80,
+                )),
           ),
-
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-        },
-        tooltip: 'increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
