@@ -58,32 +58,13 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Container(
-          color: Colors.green[200],
-          constraints: const BoxConstraints(
-            minHeight: 150,
-            maxHeight: 500,
-            minWidth: 200,
-            maxWidth: 300,
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: const [
-
-              FlutterLogo(
-                size: 100,
-              ),
-              FlutterLogo(
-                size: 200,
-              ),
-              SizedBox(height: 40,),
-              FlutterLogo(
-                size: 50,
-              ),
-            ],
-          ),
+        child: Stack(
+          alignment: Alignment(0,0),
+          children: [
+            Text('trsitan',style: TextStyle(fontSize: 70),),
+            Text('2345543'),
+            FlutterLogo(),
+          ],
         ),
       ),
     );
